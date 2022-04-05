@@ -1,6 +1,8 @@
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-});
+if (!process.env.CI) {
+  require("dotenv").config({
+    path: `.env.${process.env.NODE_ENV}`,
+  });
+}
 
 const linkResolver = require("./src/utils/linkResolver");
 
@@ -29,7 +31,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-        bucketName: `mbo-static-staging`,
+        bucketName: process.env.S3_BUCKET_NAME,
       },
     },
   ],
