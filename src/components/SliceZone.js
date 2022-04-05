@@ -4,7 +4,6 @@ import * as React from "react";
 import { VideoHighlight } from "../slices/VideoHighlight";
 
 const SliceZone = ({ sliceZone }) => {
-  console.log("here is SliceZone's prop", sliceZone);
   const sliceComponents = {
     video_highlights: VideoHighlight,
   };
