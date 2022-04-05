@@ -1,9 +1,10 @@
-name: s3-static-depl
+name: s3-static-staging-depl
 
 on:
   push:
     branches:
       - "!main"
+      - "*"
 
 jobs:
   build:
