@@ -31,6 +31,7 @@ runs:
         aws-region: ${{ inputs.AWS_REGION }}
     - name: Build Gatsby App
       run: npm install && npm run build && npm run deploy
+      shell: bash
       env:
         PRISMIC_REPO_NAME: ${{inputs.PRISMIC_REPO_NAME}}
         PRISMIC_ACCESS_TOKEN: ${{inputs.PRISMIC_ACCESS_TOKEN}}
