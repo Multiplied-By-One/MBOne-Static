@@ -1,0 +1,39 @@
+name: s3-static-depl
+
+inputs:
+  PRISMIC_REPO_NAME:
+    required: true
+  PRISMIC_ACCESS_TOKEN:
+    required: true
+  PRISMIC_CUSTOM_TYPES_API_TOKEN:
+    required: true
+  S3_BUCKET_NAME:
+    required: true
+  AWS_ACCESS_KEY_ID:
+    required: true
+  AWS_SECRET_ACCESS_KEY:
+    required: true
+  AWS_REGION:
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v3
+      with:
+        node-version: "16"
+        cache: "npm"
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ inputs.AWS_PROD_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ inputs.AWS_PROD_SECRET_ACCESS_KEY }}
+        aws-region: ${{ inputs.AWS_REGION }}
+    - name: Build Gatsby App
+      run: npm install && npm run build && npm run deploy
+      env:
+        PRISMIC_REPO_NAME: ${{inputs.PRISMIC_REPO_NAME}}
+        PRISMIC_ACCESS_TOKEN: ${{inputs.PRISMIC_ACCESS_TOKEN}}
+        PRISMIC_CUSTOM_TYPES_API_TOKEN: ${{inputs.PRISMIC_CUSTOM_TYPES_API_TOKEN}}
+        S3_BUCKET_NAME: ${{inputs.S3_BUCKET_NAME}}
