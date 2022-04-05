@@ -14,7 +14,6 @@ const vhTitleChild = {
 
 export const VideoHighlight = (slice) => {
   const sliceData = slice.slice;
-  console.log("slice: ", sliceData);
   return (
     <section className={"videoHighlight"}>
       <div style={vhTitle}>
