@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - uses: ./.github/actions/deploy/
+      - uses: .github/actions/deploy
         with:
           PRISMIC_REPO_NAME: ${{secrets.PRISMIC_REPO_NAME}}
           PRISMIC_ACCESS_TOKEN: ${{secrets.PRISMIC_ACCESS_TOKEN}}
