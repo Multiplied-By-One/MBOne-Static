@@ -26,8 +26,8 @@ runs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-access-key-id: ${{ inputs.AWS_PROD_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ inputs.AWS_PROD_SECRET_ACCESS_KEY }}
+        aws-access-key-id: ${{ inputs.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ inputs.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ inputs.AWS_REGION }}
     - name: Build Gatsby App
       run: npm install && npm run build && npm run deploy
